@@ -12,12 +12,22 @@ public class ConsumerExample {
     public static void main(String[] args) {
         //real world example
         printStudents();
+        printStudentNamesAndActivities();
 
     }
 
     public static void printStudents() {
+        System.out.println("printStudents:");
         Consumer<Student> c1 = (s) -> System.out.println(s.getName());
         List<Student> students = StudentDataBase.getAllStudents();
         students.forEach(c1);
+    }
+
+    public static void printStudentNamesAndActivities() {
+        System.out.println("printStudentNamesAndActivities:");
+        Consumer<Student> c2 = (s) -> System.out.print(s.getName());
+        Consumer<Student> c3 = (s) -> System.out.println(s.getActivities());
+        List<Student> students = StudentDataBase.getAllStudents();
+        students.forEach(c2.andThen(c3));
     }
 }
