@@ -13,6 +13,7 @@ public class ConsumerExample {
         //real world example
         printStudents();
         printStudentNamesAndActivities();
+        printStudentsWithSpecificGrade();
 
     }
 
@@ -30,4 +31,17 @@ public class ConsumerExample {
         List<Student> students = StudentDataBase.getAllStudents();
         students.forEach(c2.andThen(c3));
     }
+
+    public static void printStudentsWithSpecificGrade() {
+        System.out.println("printStudentsWithSpecificGrade:");
+
+        Consumer<Student> c4 = (s) -> {
+            if (s.getGradeLevel() >= 3 && s.getGpa()>=3.9)
+                System.out.println(s);
+        };
+        List<Student> students = StudentDataBase.getAllStudents();
+        students.forEach(c4);
+    }
+
+
 }
