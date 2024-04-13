@@ -12,17 +12,30 @@ public class PredicateStudentExample {
     static Predicate<Student> p2 = (stu) -> stu.getGpa() >= 3.9;
 
     public static void main(String[] args) {
-        filterStudentByGradeLevel();
-        filterStudentByGpa();
+//        filterStudentByGradeLevel();
+//        filterStudentByGpa();
+        filterStudents();
     }
 
-    public static void filterStudentByGpa(){
+    public static void filterStudents() {
+        System.out.println("filterStudents; ");
+        List<Student> students = StudentDataBase.getAllStudents();
+        students.forEach(stu -> {
+            if (p1.and(p2).test(stu)) {
+                System.out.println(stu);
+            }
+            //same like use or and negate
+        });
+    }
+
+    public static void filterStudentByGpa() {
         System.out.println("filterStudentByGpa; ");
         List<Student> students = StudentDataBase.getAllStudents();
         students.forEach(stu -> {
             if (p2.test(stu)) {
                 System.out.println(stu);
-            };
+            }
+            ;
         });
     }
 
@@ -32,7 +45,8 @@ public class PredicateStudentExample {
         students.forEach(stu -> {
             if (p1.test(stu)) {
                 System.out.println(stu);
-            };
+            }
+            ;
         });
     }
 
