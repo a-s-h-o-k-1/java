@@ -9,12 +9,25 @@ import java.util.function.Predicate;
 public class PredicateStudentExample {
 
     static Predicate<Student> p1 = (stu) -> stu.getGradeLevel() >= 3;
+    static Predicate<Student> p2 = (stu) -> stu.getGpa() >= 3.9;
 
     public static void main(String[] args) {
         filterStudentByGradeLevel();
+        filterStudentByGpa();
+    }
+
+    public static void filterStudentByGpa(){
+        System.out.println("filterStudentByGpa; ");
+        List<Student> students = StudentDataBase.getAllStudents();
+        students.forEach(stu -> {
+            if (p2.test(stu)) {
+                System.out.println(stu);
+            };
+        });
     }
 
     public static void filterStudentByGradeLevel() {
+        System.out.println("filterStudentByGradeLevel; ");
         List<Student> students = StudentDataBase.getAllStudents();
         students.forEach(stu -> {
             if (p1.test(stu)) {
