@@ -1,7 +1,9 @@
 package com.learnJava.data;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.function.Supplier;
 
 public class Student {
     private String name;
@@ -9,6 +11,7 @@ public class Student {
     private double gpa;
     private String gender;
     List<String> activities = new ArrayList<>();
+
 
     public Student(String name, int gradeLevel, double gpa, String gender, List<String> activities) {
         this.name = name;
